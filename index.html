@@ -26,12 +26,11 @@
                     <tr>
                         <td><input type="text" id="getVegetable" /></td>
                         <td>
-                            <input type="number" oninput=
-                            validity.valid||(value=''); id="getQuantity">
+                            <input type="number" step='.01'  required min="0" oninput="validity.valid||(value='');" id="getQuantity">
+                            
                         </td>
                         <td>
-                            <input type="number" oninput=
-                            validity.valid||(value=''); id="getUnitPrice">
+                            <input type="number" step='.01'  required min="0" oninput="validity.valid||(value='');" id="getUnitPrice">
                         </td>
                         <td><button onclick="add_row()">Add Item</button></td>
                     </tr>

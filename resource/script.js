@@ -23,13 +23,13 @@ function editRow(no) {
         newVegetable +
         "'>";
     editQuantity.innerHTML =
-        "<input type='number' oninput= validity.valid||(value='');   id='editedQuantity" +
+        "<input type='number' step='.01'  required min='0' oninput='validity.valid||(value='');'  id='editedQuantity" +
         no +
         "' value='" +
         newQuantity +
         "'>";
     editUnitPrice.innerHTML =
-        "<input type='number' oninput= validity.valid||(value='');   id='editedUnitPrice" +
+        "<input type='number' step='.01'  required min='0' oninput='validity.valid||(value='');'   id='editedUnitPrice" +
         no +
         "' value='" +
         newUnitPrice +
@@ -40,7 +40,12 @@ function saveRow(no) {
     var editedVegetable = document.getElementById("editedVegetable" + no).value;
     var editedQuantity = document.getElementById("editedQuantity" + no).value;
     var editedUnitPrice = document.getElementById("editedUnitPrice" + no).value;
-
+    
+    if(editedVegetable===""||editedQuantity===""||editedUnitPrice===""||editedQuantity<0||editedUnitPrice<0)
+        {
+            alert("Wrong Attribute entered");
+        }
+    else{
     document.getElementById("vegetableRow" + no).innerHTML = editedVegetable;
     document.getElementById("quantityRow" + no).innerHTML = editedQuantity;
     document.getElementById("unitPriceRow" + no).innerHTML = editedUnitPrice;
@@ -53,6 +58,7 @@ function saveRow(no) {
     document.getElementById("save_button" + no).style.display = "none";
     displayCart();
     alert("Row " + no + 1 + " edited Sucessfully");
+    }
 }
 function deleteRow(no) {
     vegetableNameArray.splice(no, 1);
@@ -68,16 +74,19 @@ function add_row() {
 
     if (getVegetable === "" || getQuantity === "" || getUnitPrice === "") {
         alert("Incomplete Data");
-    } else {
+    } else if (getQuantity < "0" || getUnitPrice < "0") {
+        alert("Negative quantity or Price detected");
+    } 
+ 
+    else {
         vegetableNameArray.push(getVegetable);
         quantityArray.push(getQuantity);
         unitPriceArray.push(getUnitPrice);
         displayCart();
-
+    }
         document.getElementById("getVegetable").value = "";
         document.getElementById("getQuantity").value = "";
         document.getElementById("getUnitPrice").value = "";
-    }
 }
 function displayCart() {
     cartdata =
