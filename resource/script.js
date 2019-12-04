@@ -8,7 +8,6 @@ function editRow(no) {
     document.getElementById("row" + no).style.backgroundColor = "#ff0000";
     document.getElementById("DeleteButton" + no).style.display = "none";
 
-
     var editVegetable = document.getElementById("vegetableRow" + no);
     var editQuantity = document.getElementById("quantityRow" + no);
     var editUnitPrice = document.getElementById("unitPriceRow" + no);
@@ -53,7 +52,7 @@ function saveRow(no) {
     document.getElementById("edit_button" + no).style.display = "block";
     document.getElementById("save_button" + no).style.display = "none";
     displayCart();
-    alert("Row "+no+1+" edited Sucessfully");
+    alert("Row " + no + 1 + " edited Sucessfully");
 }
 function deleteRow(no) {
     vegetableNameArray.splice(no, 1);
@@ -66,24 +65,19 @@ function add_row() {
     var getVegetable = document.getElementById("getVegetable").value;
     var getQuantity = document.getElementById("getQuantity").value;
     var getUnitPrice = document.getElementById("getUnitPrice").value;
-    
-    if (
-        getVegetable === "" ||
-        getQuantity === "" ||
-        getUnitPrice === ""
-    ) {
-        alert("Incomplete Data");
-    }
-else{
-    vegetableNameArray.push(getVegetable);
-    quantityArray.push(getQuantity);
-    unitPriceArray.push(getUnitPrice);
-    displayCart();
 
-    document.getElementById("getVegetable").value = "";
-    document.getElementById("getQuantity").value = "";
-    document.getElementById("getUnitPrice").value = "";
-}
+    if (getVegetable === "" || getQuantity === "" || getUnitPrice === "") {
+        alert("Incomplete Data");
+    } else {
+        vegetableNameArray.push(getVegetable);
+        quantityArray.push(getQuantity);
+        unitPriceArray.push(getUnitPrice);
+        displayCart();
+
+        document.getElementById("getVegetable").value = "";
+        document.getElementById("getQuantity").value = "";
+        document.getElementById("getUnitPrice").value = "";
+    }
 }
 function displayCart() {
     cartdata =
@@ -118,8 +112,9 @@ function displayCart() {
             i +
             "' onclick='saveRow(" +
             i +
-            ")'><i class='fa fa-save ico save'  ></i></button> <button id='DeleteButton"+
-            i+"'onclick='deleteRow(" +
+            ")'><i class='fa fa-save ico save'  ></i></button> <button id='DeleteButton" +
+            i +
+            "'onclick='deleteRow(" +
             i +
             ")'><i class='fa fa-trash ico del'   aria-hidden='true'></i></button></td></tr>";
     }
@@ -131,4 +126,4 @@ function displayCart() {
     document.getElementById("cart").innerHTML = cartdata;
 }
 /*
-*/
+ */
