@@ -1,37 +1,37 @@
 td {
-  text-align: center;
-  vertical-align: middle;
+    text-align: center;
+    vertical-align: middle;
     font-size: 20px;
 }
-.dataBlock
-{
-    border:1px solid black;
+.dataBlock {
+    border: 1px solid black;
     padding-bottom: 50px;
     background-color: darkgoldenrod;
-    overflow-x:auto;
+    overflow-x: auto;
     width: 100%;
 }
-input{
+input {
     padding: 1px 6px;
 }
-input[type=number],input[type=text],button
-{
+input[type="number"],
+input[type="text"],
+button {
     font-size: 20px;
 }
 
 body {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "Montserrat", sans-serif;
     background-color: aquamarine;
 }
-.ico{
-font-size:16px;
+.ico {
+    font-size: 16px;
 }
-.del{
+.del {
     color: red;
 }
-.save{
+.save {
     color: black;
 }
-.edit{
+.edit {
     color: brown;
 }
