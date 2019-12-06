@@ -39,4 +39,20 @@ body {
 .center{
     text-align: center;
 }
+.error{
+    color: red;
+}
+.message{
+    color: green;
+}
+.footer {
+   background-color: #2f2f2f;
+   color: white;
+    padding: 1rem;
+   text-align: center;
+}
+.content {
+  padding: 20px;
+  min-height: 100%;
 
+}

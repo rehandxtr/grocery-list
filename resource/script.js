@@ -3,6 +3,8 @@ quantityArray = [];
 unitPriceArray = [];
 
 function editRow(no) {
+    document.getElementById("error").innerHTML = "";
+    document.getElementById("message").innerHTML = "";
     document.getElementById("edit_button" + no).style.display = "none";
     document.getElementById("save_button" + no).style.display = "block";
     document.getElementById("row" + no).style.backgroundColor = "#ff0000";
@@ -37,30 +39,42 @@ function editRow(no) {
 }
 
 function saveRow(no) {
+    document.getElementById("error").innerHTML = "";
     var editedVegetable = document.getElementById("editedVegetable" + no).value;
     var editedQuantity = document.getElementById("editedQuantity" + no).value;
     var editedUnitPrice = document.getElementById("editedUnitPrice" + no).value;
-    
-    if(editedVegetable===""||editedQuantity===""||editedUnitPrice===""||editedQuantity<0||editedUnitPrice<0)
-        {
-            alert("Wrong Attribute entered");
-        }
-    else{
-    document.getElementById("vegetableRow" + no).innerHTML = editedVegetable;
-    document.getElementById("quantityRow" + no).innerHTML = editedQuantity;
-    document.getElementById("unitPriceRow" + no).innerHTML = editedUnitPrice;
 
-    vegetableNameArray[no] = editedVegetable;
-    quantityArray[no] = editedQuantity;
-    unitPriceArray[no] = editedUnitPrice;
+    if (
+        editedVegetable === "" ||
+        editedQuantity === "" ||
+        editedUnitPrice === "" ||
+        editedQuantity < 0 ||
+        editedUnitPrice < 0
+    ) {
+        document.getElementById("error").innerHTML = "Wrong Attribute entered";
+    } else {
+        document.getElementById(
+            "vegetableRow" + no
+        ).innerHTML = editedVegetable;
+        document.getElementById("quantityRow" + no).innerHTML = editedQuantity;
+        document.getElementById(
+            "unitPriceRow" + no
+        ).innerHTML = editedUnitPrice;
 
-    document.getElementById("edit_button" + no).style.display = "block";
-    document.getElementById("save_button" + no).style.display = "none";
-    displayCart();
-    alert("Row " + no + 1 + " edited Sucessfully");
+        vegetableNameArray[no] = editedVegetable;
+        quantityArray[no] = editedQuantity;
+        unitPriceArray[no] = editedUnitPrice;
+
+        document.getElementById("edit_button" + no).style.display = "block";
+        document.getElementById("save_button" + no).style.display = "none";
+        displayCart();
+        document.getElementById("message").innerHTML =
+            "Row " + no + 1 + " edited Sucessfully";
     }
 }
 function deleteRow(no) {
+    document.getElementById("message").innerHTML =
+        "Row " + no + 1 + " DELETED Sucessfully";
     vegetableNameArray.splice(no, 1);
     quantityArray.splice(no, 1);
     unitPriceArray.splice(no, 1);
@@ -73,20 +87,21 @@ function add_row() {
     var getUnitPrice = document.getElementById("getUnitPrice").value;
 
     if (getVegetable === "" || getQuantity === "" || getUnitPrice === "") {
-        alert("Incomplete Data");
+        document.getElementById("message").innerHTML = "Empty Value";
     } else if (getQuantity < "0" || getUnitPrice < "0") {
-        alert("Negative quantity or Price detected");
-    } 
- 
-    else {
+        document.getElementById("error").innerHTML =
+            "Negative quantity or Price detected";
+    } else {
         vegetableNameArray.push(getVegetable);
         quantityArray.push(getQuantity);
         unitPriceArray.push(getUnitPrice);
         displayCart();
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("message").innerHTML = "";
     }
-        document.getElementById("getVegetable").value = "";
-        document.getElementById("getQuantity").value = "";
-        document.getElementById("getUnitPrice").value = "";
+    document.getElementById("getVegetable").value = "";
+    document.getElementById("getQuantity").value = "";
+    document.getElementById("getUnitPrice").value = "";
 }
 function displayCart() {
     cartdata =
